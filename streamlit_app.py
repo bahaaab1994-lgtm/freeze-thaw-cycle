@@ -53,22 +53,22 @@ def main():
         if data.empty:
             st.error(f"No data found for season {selected_season}")
             return
-        else:
-            # Show data summary
-            st.success(f"✅ Successfully loaded {len(data)} records for season {selected_season}")
+        # else:
+        #     # Show data summary
+        #     st.success(f"✅ Successfully loaded {len(data)} records for season {selected_season}")
             
-            with st.expander("📊 Data Summary"):
-                col1, col2, col3 = st.columns(3)
-                with col1:
-                    st.metric("Total Records", len(data))
-                with col2:
-                    st.metric("States", str(data['State'].nunique()))
-                with col3:
-                    st.metric("Counties", str(data['County'].nunique()))
+        #     with st.expander("📊 Data Summary"):
+        #         col1, col2, col3 = st.columns(3)
+        #         with col1:
+        #             st.metric("Total Records", len(data))
+        #         with col2:
+        #             st.metric("States", str(data['State'].nunique()))
+        #         with col3:
+        #             st.metric("Counties", str(data['County'].nunique()))
                 
-                # Show sample data
-                st.subheader("Sample Data")
-                st.dataframe(data.head(), use_container_width=True)
+        #         # Show sample data
+        #         st.subheader("Sample Data")
+        #         st.dataframe(data.head(), use_container_width=True)
     except Exception as e:
         st.error(f"Error loading data: {str(e)}")
         return
