@@ -12,12 +12,13 @@ def get_available_seasons():
     import glob
     import re
     
-    excel_files = glob.glob('Predicted_Freeze_Thaw_Cycles_*.xlsx')
+    # Look for files with spaces in names (your actual file pattern)
+    excel_files = glob.glob('Predicted Freeze-Thaw Cycles (*.xlsx')
     seasons = []
     
     for file in excel_files:
-        # Extract season from filename
-        match = re.search(r'(\d{4}-\d{4})', file)
+        # Extract season from filename with parentheses
+        match = re.search(r'\((\d{4}-\d{4})\)', file)
         if match:
             seasons.append(match.group(1))
     
@@ -40,8 +41,8 @@ def load_freeze_thaw_data_by_season(season=None):
             })
         season = available_seasons[-1]  # Most recent
     
-    # Find the file for the specified season
-    file_pattern = f"Predicted_Freeze_Thaw_Cycles_{season}.xlsx"
+    # Find the file for the specified season (with parentheses)
+    file_pattern = f"Predicted Freeze-Thaw Cycles ({season}).xlsx"
     matching_files = glob.glob(file_pattern)
     
     if not matching_files:
