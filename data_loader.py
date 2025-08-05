@@ -108,7 +108,7 @@ def load_freeze_thaw_data_by_season(season=None):
             temp_data['Total_Freeze_Thaw_Cycles']
         )
         
-        print(f"Successfully loaded {len(temp_data)} records from {file_path} for season {season}")
+        # print(f"Successfully loaded {len(temp_data)} records from {file_path} for season {season}")
         return temp_data
         
     except Exception as e:
