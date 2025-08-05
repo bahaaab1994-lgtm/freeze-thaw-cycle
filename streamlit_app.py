@@ -256,13 +256,17 @@ def get_states_for_season(season):
         data = load_freeze_thaw_data_by_season(season)
         if data.empty:
             return []
-        # Get unique states and sort them alphabetically
-        states = data['State'].dropna().unique()
-        if hasattr(states, 'tolist'):
-            states = states.tolist()
+        # Get unique states, clean and deduplicate
+        states = data['State'].dropna().astype(str).str.strip()
+        unique_states = states.unique()
+        if hasattr(unique_states, 'tolist'):
+            states_list = unique_states.tolist()
         else:
-            states = list(states)
-        return sorted(states)
+            states_list = list(unique_states)
+        # Remove any empty strings and ensure proper deduplication
+        clean_states = [state for state in states_list if state and state.strip()]
+        # Use set to ensure no duplicates, then sort
+        return sorted(list(set(clean_states)))
     except Exception as e:
         st.error(f"Error loading states for season {season}: {str(e)}")
         return []
