@@ -220,7 +220,7 @@ def main():
     st.markdown("""
     This application provides freeze-thaw cycle data from monitoring stations across various states.
     
-    - ** Each season represents a winter period, **from September to April**, during which freeze-thaw cycles are counted.
+    - ** Each season represents a winter period from September to April.
     - **Total Freeze-Thaw Cycles**: Represents all freezing events that the concrete experienced during the monitoring period, regardless of the moisture condition.
     - **Damaging Freeze-Thaw Cycles**: Refers to the subset of freeze-thaw cycles during which the Degree of Saturation (DOS) exceeded the critical threshold of 80%, making the concrete susceptible to freeze-thaw damage.
     
